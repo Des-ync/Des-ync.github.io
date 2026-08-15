@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{ margin:0; background:#FAF9F7; color:#0B0B0C; overflow-x:hidden; -webkit-font-smoothing:antialiased; font-family:'Instrument Sans',system-ui,sans-serif; }
+  a{ color:inherit; text-decoration:none; }
+  a:hover{ color:#E5231B; }
+  ::selection{ background:#FF5C00; color:#fff; }
+  :focus-visible{ outline:2px solid #1536E8; outline-offset:3px; }
+  @keyframes drift{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-50%,0,0); } }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; } }
+</style>
+</helmet>
+
+<div data-root="" style="position:relative; width:100%; overflow:clip; background:#FAF9F7; font-family:'Instrument Sans',system-ui,sans-serif; --gut:clamp(1.15rem, 5vw, 5rem)">
+
+  <div data-planes="" style="position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; mix-blend-mode:multiply">
+    <div style="position:absolute; width:82vw; height:82vw; background:#FF5C00; opacity:.21; left:-26vw; top:4vh; transform:rotate(calc(var(--sp, 0) * 130deg)) translate3d(calc(var(--sp, 0) * 48vw), calc(var(--sp, 0) * -30vh), 0) scale(calc(1 + var(--v, 0) * 0.06))"></div>
+    <div style="position:absolute; width:68vw; height:68vw; background:#1536E8; opacity:.19; right:-24vw; top:30vh; transform:rotate(calc(var(--sp, 0) * -150deg)) translate3d(calc(var(--sp, 0) * -56vw), calc(var(--sp, 0) * 36vh), 0) scale(calc(1 - var(--v, 0) * 0.06))"></div>
+    <div style="position:absolute; width:56vw; height:56vw; background:#E5231B; opacity:.17; left:26vw; top:82vh; transform:rotate(calc(var(--sp, 0) * 90deg)) translate3d(calc(var(--sp, 0) * -22vw), calc(var(--sp, 0) * -76vh), 0)"></div>
+    <div style="position:absolute; width:44vw; height:44vw; border-radius:50%; background:#FF5C00; opacity:.15; right:8vw; top:-18vw; transform:translate3d(calc(var(--sp, 0) * -30vw), calc(var(--sp, 0) * 92vh), 0)"></div>
+    <div style="position:absolute; inset:-20% -20%; opacity:.13; background-image:repeating-linear-gradient(115deg, #1536E8 0 3px, transparent 3px 26px); transform:translate3d(calc(var(--y, 0) * 0.05px), 0, 0) rotate(calc(var(--sp, 0) * 8deg))"></div>
+    <div style="position:absolute; inset:0; opacity:.24; background-image:radial-gradient(#E5231B 1.6px, transparent 1.7px); background-size:26px 26px; background-position:0 calc(var(--y, 0) * -0.35px)"></div>
+  </div>
+
+  <div data-grain="" style="position:fixed; inset:0; z-index:2; pointer-events:none; opacity:.18; mix-blend-mode:multiply; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E&quot;)"></div>
+
+  <header style="position:fixed; top:0; left:0; right:0; z-index:30; background:rgba(250,249,247,.82); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1.5px solid #0B0B0C">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.62rem var(--gut)">
+      <a href="#top" style="font-family:'IBM Plex Mono',monospace; font-size:.66rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase">Kwame<span style="color:#A81109">.</span>me</a>
+      <div style="display:flex; align-items:center; gap:1.1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase">
+        <span data-readout="" style="color:#1536E8; font-variant-numeric:tabular-nums">000%</span>
+        <span style="display:flex; align-items:center; gap:.45rem"><i style="width:7px; height:7px; background:#FF5C00; display:block"></i>Open to internships</span>
+      </div>
+    </div>
+    <div style="height:3px; background:#0B0B0C; transform:scaleX(var(--sp, 0)); transform-origin:left"></div>
+  </header>
+
+  <nav data-rail="" aria-label="Sections" style="position:fixed; left:1rem; top:50%; z-index:25; display:flex; flex-direction:column; gap:.9rem; transform:translateY(-50%); font-family:'IBM Plex Mono',monospace; font-size:.54rem; letter-spacing:.16em; text-transform:uppercase">
+    <a href="#top" data-rail-item="" style="display:flex; align-items:center; gap:.5rem; color:#0B0B0C; transition:opacity .3s ease"><i style="display:block; width:16px; height:3px; background:currentColor; transition:width .35s ease"></i><span>Top</span></a>
+    <a href="#work" data-rail-item="" style="display:flex; align-items:center; gap:.5rem; color:#0B0B0C; transition:opacity .3s ease"><i style="display:block; width:16px; height:3px; background:currentColor; transition:width .35s ease"></i><span>Ledger</span></a>
+    <a href="#record" data-rail-item="" style="display:flex; align-items:center; gap:.5rem; color:#0B0B0C; transition:opacity .3s ease"><i style="display:block; width:16px; height:3px; background:currentColor; transition:width .35s ease"></i><span>Record</span></a>
+    <a href="#approach" data-rail-item="" style="display:flex; align-items:center; gap:.5rem; color:#0B0B0C; transition:opacity .3s ease"><i style="display:block; width:16px; height:3px; background:currentColor; transition:width .35s ease"></i><span>Method</span></a>
+    <a href="#contact" data-rail-item="" style="display:flex; align-items:center; gap:.5rem; color:#0B0B0C; transition:opacity .3s ease"><i style="display:block; width:16px; height:3px; background:currentColor; transition:width .35s ease"></i><span>Contact</span></a>
+  </nav>
+
+  <section id="top" style="position:relative; z-index:1; padding:clamp(7rem, 16vw, 12rem) var(--gut) 0">
+    <p data-anim="" style="margin:0 0 clamp(1.6rem, 4vw, 2.6rem); font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:#1536E8; opacity:var(--in, 1); transform:translate3d(calc((1 - var(--in, 1)) * -22px), 0, 0)">BSc Procurement &amp; Supply Chain · UPSA · ACCA Candidate · Accra, GH</p>
+
+    <h1 data-anim="" style="margin:0; max-width:15ch; font-family:'Bricolage Grotesque',system-ui,sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.1rem, 11.5vw, 10.5rem); line-height:.86; letter-spacing:-.045em; text-transform:uppercase; text-wrap:balance; transform:translate3d(0, calc(var(--hp, 0) * -70px), 0) scale(calc(1 - var(--hp, 0) * 0.05)); transform-origin:left top; opacity:calc(1 - var(--hp, 0) * 0.55)">
+      <span style="display:inline-block; opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 40px), 0)">I build for the businesses that trade on </span><span style="position:relative; display:inline-block; isolation:isolate; color:#FAF9F7; padding:0 .1em"><span style="position:absolute; inset:.06em 0 .04em; background:#FF5C00; z-index:-1; transform:scaleX(var(--in, 1)); transform-origin:left"></span>WhatsApp</span><span style="display:inline-block"> and settle in </span><span style="position:relative; display:inline-block; isolation:isolate; color:#FAF9F7; padding:0 .1em"><span style="position:absolute; inset:.06em 0 .04em; background:#1536E8; z-index:-1; transform:scaleX(var(--in, 1)); transform-origin:left"></span>MoMo</span><span style="color:#E5231B">.</span>
+    </h1>
+
+    <p data-anim="" style="margin:clamp(2rem, 5vw, 3rem) 0 0; max-width:58ch; font-size:clamp(1.02rem, .95rem + .4vw, 1.28rem); line-height:1.55; color:#1A1A1C; opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 26px), 0)">
+      A procurement and supply chain student in Accra who kept noticing the same gap: the tools sold to Ghanaian SMEs assume a business that doesn't exist here. So I build the ones that do — <b style="color:#0B0B0C; font-weight:600; box-shadow:inset 0 -.42em 0 rgba(255,92,0,.28)">billing rails, credit ledgers, cold chain, and one bottled kenkey brand</b> — while reading for ACCA and, after this, an LLB.
+    </p>
+
+    <dl style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:0; margin:clamp(3.5rem, 8vw, 5.5rem) 0 0; border-top:2.5px solid #0B0B0C">
+      <div data-anim="" style="padding:1.15rem 1.4rem 1.5rem 0; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 20px), 0)">
+        <dt style="margin:0 0 .55rem; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#2E2E31">Ventures on the books</dt>
+        <dd style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 86; font-weight:600; font-size:1.45rem; letter-spacing:-.02em; line-height:1.1"><span data-num="8" style="color:#9E3800">8</span> shipped or in build</dd>
+      </div>
+      <div data-anim="" style="padding:1.15rem 1.4rem 1.5rem 0; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 20px), 0)">
+        <dt style="margin:0 0 .55rem; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#2E2E31">Studying</dt>
+        <dd style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 86; font-weight:600; font-size:1.45rem; letter-spacing:-.02em; line-height:1.1">Level 200 · UPSA</dd>
+      </div>
+      <div data-anim="" style="padding:1.15rem 1.4rem 1.5rem 0; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 20px), 0)">
+        <dt style="margin:0 0 .55rem; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#2E2E31">ACCA</dt>
+        <dd style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 86; font-weight:600; font-size:1.45rem; letter-spacing:-.02em; line-height:1.1">BT · MA · FA — <span style="color:#1536E8">Sept sitting</span></dd>
+      </div>
+      <div data-anim="" style="padding:1.15rem 1.4rem 1.5rem 0; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 20px), 0)">
+        <dt style="margin:0 0 .55rem; font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:#2E2E31">Built on</dt>
+        <dd style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 86; font-weight:600; font-size:1.45rem; letter-spacing:-.02em; line-height:1.1">MoMo · Paystack · Hubtel</dd>
+      </div>
+    </dl>
+  </section>
+
+  <div style="position:relative; z-index:1; margin:clamp(4rem, 9vw, 7rem) 0 0; padding:.7rem 0; background:#0B0B0C; color:#FAF9F7; overflow:hidden; border-top:2.5px solid #0B0B0C; border-bottom:2.5px solid #0B0B0C">
+    <div data-marquee="" style="transform:translate3d(calc(var(--y, 0) * -0.14px), 0, 0) skewX(calc(var(--v, 0) * -7deg))">
+      <div style="display:flex; width:max-content; animation:drift 34s linear infinite; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 80; font-weight:600; font-size:clamp(1.1rem, 2.6vw, 2rem); letter-spacing:-.01em; text-transform:uppercase; white-space:nowrap">
+        <span style="display:flex; gap:1.6rem; padding-right:1.6rem"><span>WhatsApp commerce</span><span style="color:#FF5C00">✳</span><span>MoMo billing rails</span><span style="color:#7C97FF">✳</span><span>Credit ledgers</span><span style="color:#E5231B">✳</span><span>Solar cold chain</span><span style="color:#FF5C00">✳</span><span>Procurement</span><span style="color:#7C97FF">✳</span><span>ACCA</span><span style="color:#E5231B">✳</span></span>
+        <span style="display:flex; gap:1.6rem; padding-right:1.6rem" aria-hidden="true"><span>WhatsApp commerce</span><span style="color:#FF5C00">✳</span><span>MoMo billing rails</span><span style="color:#7C97FF">✳</span><span>Credit ledgers</span><span style="color:#E5231B">✳</span><span>Solar cold chain</span><span style="color:#FF5C00">✳</span><span>Procurement</span><span style="color:#7C97FF">✳</span><span>ACCA</span><span style="color:#E5231B">✳</span></span>
+      </div>
+    </div>
+  </div>
+
+  <section id="work" style="position:relative; z-index:1">
+    <span aria-hidden="true" style="position:absolute; top:1rem; right:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 76; font-weight:700; font-size:clamp(9rem, 26vw, 24rem); line-height:.72; letter-spacing:-.06em; color:transparent; -webkit-text-stroke:2px rgba(11,11,12,.16); pointer-events:none; transform:translate3d(calc(var(--y, 0) * 0.06px - 4vw), 0, 0)">01</span>
+    <div style="padding:clamp(4.5rem, 10vw, 8rem) var(--gut) clamp(2rem, 4vw, 3rem); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(1.5rem, 4vw, 4rem); align-items:end">
+      <h2 data-anim="" style="margin:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 80; font-weight:700; font-size:clamp(2.4rem, 7vw, 5.5rem); line-height:.9; letter-spacing:-.04em; text-transform:uppercase; opacity:var(--in, 1); transform:translate3d(calc((1 - var(--in, 1)) * -30px), 0, 0)"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:.66rem; font-weight:500; letter-spacing:.2em; margin-bottom:1.1rem; color:#A81109">01 / The venture ledger</span>Everything<br>on the books</h2>
+      <p data-anim="" style="margin:0 0 .6rem; max-width:44ch; color:#232326; font-size:1.02rem; line-height:1.6; opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 22px), 0)">What it is, what it runs on, and where it actually stands. No mockups counted as products. <span style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:#1536E8">↓ scroll to run the ledger →</span></p>
+    </div>
+
+    <div data-pin-outer="" style="position:relative; height:100vh">
+      <div style="position:sticky; top:0; height:100vh; display:flex; flex-direction:column; justify-content:center; overflow:hidden; border-top:2.5px solid #0B0B0C; border-bottom:2.5px solid #0B0B0C">
+        <div style="position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between; padding:5.2rem var(--gut) 0; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:#2E2E31; pointer-events:none">
+          <span>Venture ledger</span><span data-count="" style="color:#0B0B0C; font-variant-numeric:tabular-nums">01 / 06</span>
+        </div>
+
+        <div data-track="" style="display:flex; align-items:stretch; gap:clamp(1rem, 2.4vw, 2rem); padding:0 var(--gut); width:max-content; will-change:transform">
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#FF5C00; color:#FFFFFF; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:#0B0B0C">
+              <span>2025 → now</span><span style="border:1.5px solid currentColor; padding:.25rem .55rem">Deployed · Railway</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); opacity:.42">01</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">WA-B 2.0</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55; color:#0B0B0C">WhatsApp-first commerce and subscription billing for Ghanaian SMEs. Merchants run a catalogue, take orders and collect recurring payments without their customer ever leaving the chat.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:#0B0B0C">
+              <span style="border:1.5px solid currentColor; padding:.3rem .5rem">Node · Express</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">PostgreSQL</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">WhatsApp Cloud API</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Paystack</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Hubtel MoMo</span>
+            </div>
+          </article>
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#FAF9F7; color:#0B0B0C; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase">
+              <span>2025</span><span style="border:1.5px solid currentColor; padding:.25rem .55rem; background:#1536E8; color:#fff; border-color:#1536E8">Buildathon entry</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); color:rgba(11,11,12,.18)">02</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">SikaBook</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55; color:#232326">A credit ledger for informal shopkeepers — the exercise book behind the counter, digitised. Built for the Moolre Startup Cup buildathon.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase">
+              <span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">SaaS</span><span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">Informal retail</span><span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">Credit tracking</span>
+            </div>
+          </article>
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#1536E8; color:#FFFFFF; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase">
+              <span>2025 → now</span><span style="border:1.5px solid currentColor; padding:.25rem .55rem">Trading</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); opacity:.42">03</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">MashKe Lab · Yohii</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55">Bottled kenkey-based drinks in strawberry, vanilla and coconut. I sit in the finance department and have worked the brand end too — identity, TV spot, and multi-platform PR.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase">
+              <span style="border:1.5px solid currentColor; padding:.3rem .5rem">FMCG</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Finance</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Brand &amp; PR</span>
+            </div>
+          </article>
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#FAF9F7; color:#0B0B0C; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase">
+              <span>2025</span><span style="border:1.5px solid #CE180D; background:#CE180D; color:#fff; padding:.25rem .55rem">Submitted · KIC</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); color:rgba(11,11,12,.18)">04</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">ColdCrate Ghana</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55; color:#232326">Solar-powered cold chain for smallholder produce — attacking post-harvest loss at the point where it's worst, between farm gate and market. Submitted to Kosmos Innovation Center.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase">
+              <span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">AgriTech</span><span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">Cold chain</span><span style="border:1.5px solid rgba(11,11,12,.35); padding:.3rem .5rem">Solar</span>
+            </div>
+          </article>
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#CE180D; color:#FFFFFF; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase">
+              <span>2025</span><span style="border:1.5px solid currentColor; padding:.25rem .55rem">In design</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); opacity:.42">05</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">CediWise</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55">MoMo-first personal budgeting for iOS and Android. Built around how money actually moves here — mobile money first, bank account second, cash always.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase">
+              <span style="border:1.5px solid currentColor; padding:.3rem .5rem">iOS · Android</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Mobile money</span><span style="border:1.5px solid currentColor; padding:.3rem .5rem">Personal finance</span>
+            </div>
+          </article>
+
+          <article data-card="" style="width:min(84vw, 560px); display:flex; flex-direction:column; justify-content:space-between; gap:1.6rem; padding:clamp(1.6rem, 3vw, 2.4rem); background:#0B0B0C; color:#FAF9F7; border:2.5px solid #0B0B0C; transform:translate3d(0, calc(var(--c, 0) * -26px), 0) rotate(calc(var(--c, 0) * 1.1deg))">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase">
+              <span>2025</span><span style="border:1.5px solid #FF5C00; color:#FF5C00; padding:.25rem .55rem">Prototype</span>
+            </div>
+            <div>
+              <span style="display:block; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 78; font-weight:700; font-size:clamp(3.5rem, 9vw, 6rem); line-height:.8; letter-spacing:-.05em; transform:translate3d(calc(var(--c, 0) * -40px), 0, 0); opacity:.4">06</span>
+              <h3 style="margin:.8rem 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 82; font-weight:700; font-size:clamp(1.9rem, 4.4vw, 3rem); line-height:.95; letter-spacing:-.035em; text-transform:uppercase">STATIQ LIVE</h3>
+              <p style="margin:0; max-width:44ch; font-size:1rem; line-height:1.55; color:rgba(250,249,247,.93)">Sports analytics on the web, with an LLM layer that turns raw match data into readable narrative instead of another stats table.</p>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:.35rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase">
+              <span style="border:1.5px solid rgba(250,249,247,.4); padding:.3rem .5rem">Web app</span><span style="border:1.5px solid rgba(250,249,247,.4); padding:.3rem .5rem">Claude API</span><span style="border:1.5px solid rgba(250,249,247,.4); padding:.3rem .5rem">Analytics</span>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="position:absolute; bottom:0; left:0; right:0; height:6px; background:rgba(11,11,12,.12)">
+          <div data-hbar="" style="height:100%; background:#FF5C00; transform:scaleX(0); transform-origin:left"></div>
+        </div>
+      </div>
+    </div>
+
+    <p data-anim="" style="max-width:64ch; margin:0; padding:clamp(2.5rem, 6vw, 4rem) var(--gut) 0; color:#232326; font-size:1.02rem; line-height:1.65; opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 22px), 0)">
+      Also on the books: <b style="color:#0B0B0C; font-weight:600">ComplianceGH Partners</b> (outsourced AML, data protection and company secretarial services — full business plan), <b style="color:#0B0B0C; font-weight:600">RemitDirect GH</b> (a low-fee diaspora remittance corridor, taken through PSP licensing and FX mechanics), and <b style="color:#0B0B0C; font-weight:600">Sankofa</b> (a faceless YouTube channel with a 52-week content bible).
+    </p>
+  </section>
+
+  <section id="record" style="position:relative; z-index:1; padding:clamp(5rem, 12vw, 9rem) var(--gut) 0">
+    <span aria-hidden="true" style="position:absolute; top:2rem; right:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 76; font-weight:700; font-size:clamp(9rem, 26vw, 24rem); line-height:.72; letter-spacing:-.06em; color:transparent; -webkit-text-stroke:2px rgba(21,54,232,.22); pointer-events:none; transform:translate3d(calc(var(--y, 0) * -0.05px + 12vw), 0, 0)">02</span>
+    <h2 data-anim="" style="margin:0 0 clamp(2.5rem, 6vw, 4rem); max-width:20ch; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 80; font-weight:700; font-size:clamp(2.4rem, 7vw, 5.5rem); line-height:.9; letter-spacing:-.04em; text-transform:uppercase; opacity:var(--in, 1); transform:translate3d(calc((1 - var(--in, 1)) * -30px), 0, 0)"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:.66rem; font-weight:500; letter-spacing:.2em; margin-bottom:1.1rem; color:#1536E8">02 / The record</span>The other half<br>of the balance sheet</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(310px, 1fr)); gap:clamp(2.5rem, 5vw, 4.5rem)">
+      <div>
+        <h3 style="margin:0 0 1.3rem; padding-bottom:.8rem; border-bottom:2.5px solid #0B0B0C; font-family:'IBM Plex Mono',monospace; font-size:.64rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase">Qualifications</h3>
+        <ul style="list-style:none; margin:0; padding:0">
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">BSc Procurement &amp; Supply Chain Management</strong>
+            <span style="color:#2E2E31; font-size:.97rem">University of Professional Studies, Accra — Level 200, in progress</span>
+          </li>
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">ACCA Qualification</strong>
+            <span style="color:#2E2E31; font-size:.97rem">Applied Knowledge: BT, MA and FA — sitting September</span>
+          </li>
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:flex; align-items:center; gap:.6rem; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">LLB <span style="font-family:'IBM Plex Mono',monospace; font-size:.56rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; background:#FF5C00; color:#0B0B0C; padding:.22rem .45rem">Planned</span></strong>
+            <span style="color:#2E2E31; font-size:.97rem">To follow the BSc — the compliance and contracts side of the same work</span>
+          </li>
+        </ul>
+        <div style="display:flex; flex-wrap:wrap; gap:.35rem; margin-top:1.4rem; font-family:'IBM Plex Mono',monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:#2E2E31">
+          <span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Transport &amp; Logistics</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">TQM</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Business Ethics</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Quantitative Methods</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Financial Accounting</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Economics</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Marketing</span><span style="border:1.5px solid rgba(11,11,12,.25); padding:.3rem .5rem">Critical Thinking</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 1.3rem; padding-bottom:.8rem; border-bottom:2.5px solid #0B0B0C; font-family:'IBM Plex Mono',monospace; font-size:.64rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase">What I actually do with it</h3>
+        <ul style="list-style:none; margin:0; padding:0">
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">Full-stack build</strong>
+            <span style="color:#2E2E31; font-size:.97rem">Node and Express on PostgreSQL, WhatsApp Cloud API, webhook and payment integrations, deployment on Railway and Netlify.</span>
+          </li>
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">Payments &amp; compliance reading</strong>
+            <span style="color:#2E2E31; font-size:.97rem">Working through merchant agreements line by line — settlement timelines, chargeback windows, fee stacks — and turning them into something a founder can act on.</span>
+          </li>
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">Financial operations</strong>
+            <span style="color:#2E2E31; font-size:.97rem">Ledger work, reconciliation and management reporting for a live FMCG business, not a case study.</span>
+          </li>
+          <li data-anim="" style="padding:1rem 0 1rem 1.1rem; border-bottom:1.5px solid rgba(11,11,12,.16); opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 18px), 0); background-image:linear-gradient(#FF5C00, #FF5C00); background-repeat:no-repeat; background-position:left top; background-size:3px calc(var(--in, 1) * 100%)">
+            <strong style="display:block; margin-bottom:.25rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 88; font-weight:600; font-size:1.16rem; letter-spacing:-.015em">Brand &amp; communications</strong>
+            <span style="color:#2E2E31; font-size:.97rem">Identity, campaign copy and PR across print, broadcast and social — most recently a mental health awareness campaign.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" style="position:relative; z-index:1; overflow:hidden; padding:clamp(5rem, 12vw, 9rem) var(--gut) clamp(4rem, 9vw, 7rem)">
+    <span aria-hidden="true" style="position:absolute; top:1.5rem; left:0; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 76; font-weight:700; font-size:clamp(9rem, 26vw, 24rem); line-height:.72; letter-spacing:-.06em; color:transparent; -webkit-text-stroke:2px rgba(229,35,27,.22); pointer-events:none; transform:translate3d(calc(var(--y, 0) * 0.05px - 8vw), 0, 0)">03</span>
+    <h2 data-anim="" style="margin:0 0 clamp(2.5rem, 6vw, 4rem); font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 80; font-weight:700; font-size:clamp(2.4rem, 7vw, 5.5rem); line-height:.9; letter-spacing:-.04em; text-transform:uppercase; opacity:var(--in, 1); transform:translate3d(calc((1 - var(--in, 1)) * -30px), 0, 0)"><span style="display:block; font-family:'IBM Plex Mono',monospace; font-size:.66rem; font-weight:500; letter-spacing:.2em; margin-bottom:1.1rem; color:#9E3800">03 / How I work</span>Three things that<br>hold every time</h2>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:clamp(1rem, 2.5vw, 2rem)">
+      <div data-anim="" style="position:relative; isolation:isolate; overflow:hidden; padding:clamp(1.6rem, 3vw, 2.4rem); border:2.5px solid #0B0B0C; min-height:clamp(280px, 34vw, 380px); display:flex; flex-direction:column; justify-content:space-between; gap:2rem">
+        <span style="position:absolute; inset:0; z-index:-1; background:#FF5C00; transform:scaleY(var(--in, 1)); transform-origin:bottom"></span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.18em; color:#0B0B0C">01</span>
+        <div style="color:#0B0B0C">
+          <h3 style="margin:0 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 84; font-weight:700; font-size:clamp(1.5rem, 2.8vw, 2.1rem); line-height:1; letter-spacing:-.03em; text-transform:uppercase">Start where the money already moves</h3>
+          <p style="margin:0; font-size:1rem; line-height:1.55">Nobody is going to change how they get paid for your product. Every build starts from MoMo, WhatsApp and cash — the rails people are already on — and works outward from there.</p>
+        </div>
+      </div>
+
+      <div data-anim="" style="position:relative; isolation:isolate; overflow:hidden; padding:clamp(1.6rem, 3vw, 2.4rem); border:2.5px solid #0B0B0C; min-height:clamp(280px, 34vw, 380px); display:flex; flex-direction:column; justify-content:space-between; gap:2rem">
+        <span style="position:absolute; inset:0; z-index:-1; background:#1536E8; transform:scaleY(var(--in, 1)); transform-origin:bottom"></span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.18em; color:#FFFFFF">02</span>
+        <div style="color:#FFFFFF">
+          <h3 style="margin:0 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 84; font-weight:700; font-size:clamp(1.5rem, 2.8vw, 2.1rem); line-height:1; letter-spacing:-.03em; text-transform:uppercase">Ship the whole thing</h3>
+          <p style="margin:0; font-size:1rem; line-height:1.55">Code, ledger, pitch deck, brand, the contract underneath it. I'd rather understand the full stack of a venture than hand off the parts that look like paperwork.</p>
+        </div>
+      </div>
+
+      <div data-anim="" style="position:relative; isolation:isolate; overflow:hidden; padding:clamp(1.6rem, 3vw, 2.4rem); border:2.5px solid #0B0B0C; min-height:clamp(280px, 34vw, 380px); display:flex; flex-direction:column; justify-content:space-between; gap:2rem">
+        <span style="position:absolute; inset:0; z-index:-1; background:#CE180D; transform:scaleY(var(--in, 1)); transform-origin:bottom"></span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:.62rem; letter-spacing:.18em; color:#FFFFFF">03</span>
+        <div style="color:#FFFFFF">
+          <h3 style="margin:0 0 .7rem; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 84; font-weight:700; font-size:clamp(1.5rem, 2.8vw, 2.1rem); line-height:1; letter-spacing:-.03em; text-transform:uppercase">Build for here, first</h3>
+          <p style="margin:0; font-size:1rem; line-height:1.55">Ghana-specific regulation, Ghana-specific margins, Ghana-specific customers. Things that work here tend to travel. Things designed for elsewhere rarely arrive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="position:relative; z-index:1; background:#1536E8; color:#FFFFFF; border-top:2.5px solid #0B0B0C; padding:clamp(4.5rem, 11vw, 8rem) var(--gut) clamp(2.5rem, 5vw, 3.5rem); overflow:hidden">
+    <p data-anim="" style="margin:0; font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.9); opacity:var(--in, 1)">Accra, Ghana · GMT+0 · Replies within a day</p>
+    <h2 data-anim="" style="margin:clamp(1.5rem, 4vw, 2.5rem) 0 1.4rem; max-width:14ch; font-family:'Bricolage Grotesque',sans-serif; font-variation-settings:'wdth' 76; font-weight:700; font-size:clamp(2.8rem, 11vw, 9rem); line-height:.85; letter-spacing:-.05em; text-transform:uppercase; opacity:var(--in, 1); transform:translate3d(0, calc((1 - var(--in, 1)) * 40px), 0)">Let's build something that <span style="position:relative; display:inline-block; isolation:isolate; padding:0 .09em"><span style="position:absolute; inset:.08em 0 .06em; background:#FF5C00; z-index:-1; transform:scaleX(var(--in, 1)); transform-origin:left"></span>works here</span>.</h2>
+    <p data-anim="" style="margin:0 0 clamp(2.5rem, 5vw, 3.5rem); max-width:48ch; font-size:1.1rem; line-height:1.55; color:rgba(255,255,255,.97); opacity:var(--in, 1)">Open to procurement and supply chain internships, and to founders who need someone who can read the contract and write the integration.</p>
+
+    <div style="display:flex; flex-wrap:wrap; gap:.6rem; font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase">
+      <a href="mailto:etators@gmail.com" style="padding:1rem 1.5rem; background:#FF5C00; color:#0B0B0C; border:2px solid #FF5C00; transition:transform .25s ease, background .25s ease, color .25s ease" style-hover="background:#FFFFFF; color:#1536E8; border-color:#FFFFFF; transform:translateY(-3px)">hello@kwame.me</a>
+      <a href="https://github.com/Des-ync" target="_blank" rel="noopener" style="padding:1rem 1.5rem; border:2px solid rgba(255,255,255,.55); transition:transform .25s ease, background .25s ease, color .25s ease" style-hover="background:#FFFFFF; color:#1536E8; border-color:#FFFFFF; transform:translateY(-3px)">GitHub</a>
+      <a href="#" style="padding:1rem 1.5rem; border:2px solid rgba(255,255,255,.55); transition:transform .25s ease, background .25s ease, color .25s ease" style-hover="background:#FFFFFF; color:#1536E8; border-color:#FFFFFF; transform:translateY(-3px)">Download CV</a>
+    </div>
+  </section>
+
+  <footer style="position:relative; z-index:1; display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; padding:1.4rem var(--gut) 2.4rem; background:#0B0B0C; color:rgba(250,249,247,.82); font-family:'IBM Plex Mono',monospace; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase">
+    <span>© <span data-year="">2026</span> — Built in Accra</span>
+    <span>Orange, red, blue &amp; paper</span>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Full&quot;,&quot;Off&quot;],&quot;default&quot;:&quot;Full&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;ledgerLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Pinned horizontal&quot;,&quot;Stacked&quot;],&quot;default&quot;:&quot;Pinned horizontal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Texture&quot;},&quot;colorPlanes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Texture&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.collect();
+    this.onResize = () => this.collect();
+    addEventListener('resize', this.onResize);
+    const loop = () => { this.tick(); this.raf = requestAnimationFrame(loop); };
+    this.raf = requestAnimationFrame(loop);
+    const y = document.querySelector('[data-year]');
+    if (y) y.textContent = new Date().getFullYear();
+    this.apply();
+  }
+  componentDidUpdate(){ this.collect(); this.apply(); }
+  componentWillUnmount(){ cancelAnimationFrame(this.raf); removeEventListener('resize', this.onResize); }
+
+  collect(){
+    this.anims = [].slice.call(document.querySelectorAll('[data-anim]'));
+    this.cards = [].slice.call(document.querySelectorAll('[data-card]'));
+    this.outer = document.querySelector('[data-pin-outer]');
+    this.track = document.querySelector('[data-track]');
+    this.hbar  = document.querySelector('[data-hbar]');
+    this.count = document.querySelector('[data-count]');
+    this.readout = document.querySelector('[data-readout]');
+    this.rootEl = document.querySelector('[data-root]');
+    this.rail = [].slice.call(document.querySelectorAll('[data-rail-item]'));
+    this.railBox = document.querySelector('[data-rail]');
+    if (this.railBox) this.railBox.style.display = innerWidth < 1080 ? 'none' : 'flex';
+    this.sections = ['top','work','record','approach','contact'].map(id => document.getElementById(id));
+    this.nums = [].slice.call(document.querySelectorAll('[data-num]'));
+    this.vSmooth = 0; this.lastY = null;
+    this.stacked = (this.props.ledgerLayout || 'Pinned horizontal') === 'Stacked';
+    if (this.outer && this.track){
+      if (this.stacked){
+        this.outer.style.height = 'auto';
+        this.outer.firstElementChild.style.position = 'static';
+        this.outer.firstElementChild.style.height = 'auto';
+        this.outer.firstElementChild.style.padding = 'clamp(2rem,5vw,4rem) 0';
+        this.track.style.flexDirection = 'column';
+        this.track.style.width = 'auto';
+        this.track.style.transform = 'none';
+        this.cards.forEach(c => { c.style.width = 'auto'; c.style.maxWidth = '760px'; });
+      } else {
+        this.outer.firstElementChild.style.position = 'sticky';
+        this.outer.firstElementChild.style.height = '100vh';
+        this.outer.firstElementChild.style.padding = '';
+        this.track.style.flexDirection = 'row';
+        this.track.style.width = 'max-content';
+        this.extra = Math.max(0, this.track.scrollWidth - innerWidth + 24);
+        this.outer.style.height = (this.extra + innerHeight) + 'px';
+      }
+    }
+  }
+
+  apply(){
+    if (this.railBox) this.railBox.style.display = innerWidth < 1080 ? 'none' : 'flex';
+    const g = document.querySelector('[data-grain]');
+    if (g) g.style.display = (this.props.grain === false) ? 'none' : 'block';
+    const p = document.querySelector('[data-planes]');
+    if (p) p.style.display = (this.props.colorPlanes === false) ? 'none' : 'block';
+  }
+
+  tick(){
+    const vh = innerHeight, off = this.motion();
+    const de = document.documentElement;
+    let y = 0, total = 1;
+    if (this.rootEl){
+      const rr = this.rootEl.getBoundingClientRect();
+      y = Math.max(0, -rr.top);
+      total = Math.max(1, rr.height - vh);
+    } else {
+      y = window.scrollY || de.scrollTop || 0;
+      total = Math.max(1, de.scrollHeight - vh);
+    }
+    const sp = Math.min(1, Math.max(0, y / total));
+    de.style.setProperty('--sp', off ? 0 : sp.toFixed(4));
+    de.style.setProperty('--y', off ? 0 : String(Math.round(y)));
+    de.style.setProperty('--hp', off ? 0 : Math.min(1, y / (vh * 0.9)).toFixed(3));
+    if (this.readout) this.readout.textContent = String(Math.round(sp * 100)).padStart(3, '0') + '%';
+
+    const dy = this.lastY === null ? 0 : y - this.lastY;
+    this.lastY = y;
+    this.vSmooth += (Math.max(-1, Math.min(1, dy / 45)) - this.vSmooth) * 0.14;
+    de.style.setProperty('--v', off ? 0 : this.vSmooth.toFixed(4));
+
+    (this.nums || []).forEach(el => {
+      const target = parseFloat(el.getAttribute('data-num')) || 0;
+      const r = el.getBoundingClientRect();
+      const p = off ? 1 : Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.35)));
+      el.textContent = String(Math.round(target * p));
+    });
+
+    if (this.railBox && this.railBox.style.display !== 'none'){
+      let active = 0;
+      this.sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= vh * 0.42) active = i; });
+      this.rail.forEach((a, i) => {
+        const on = i === active;
+        a.style.opacity = on ? '1' : '.6';
+        a.style.color = on ? '#A81109' : '#0B0B0C';
+        a.firstElementChild.style.width = on ? '34px' : '14px';
+      });
+    }
+
+    (this.anims || []).forEach(el => {
+      if (off) { el.style.setProperty('--in', 1); return; }
+      const r = el.getBoundingClientRect();
+      const v = (vh * 0.92 - r.top) / (vh * 0.30);
+      el.style.setProperty('--in', Math.min(1, Math.max(0, v)).toFixed(3));
+    });
+
+    if (this.outer && this.track && !this.stacked){
+      const r = this.outer.getBoundingClientRect();
+      const span = Math.max(1, r.height - vh);
+      const p = Math.min(1, Math.max(0, -r.top / span));
+      const x = off ? 0 : -p * (this.extra || 0);
+      this.track.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
+      if (this.hbar) this.hbar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      const n = Math.min(this.cards.length, Math.floor(p * this.cards.length) + 1);
+      if (this.count) this.count.textContent = String(n).padStart(2, '0') + ' / ' + String(this.cards.length).padStart(2, '0');
+    }
+
+    if (!off && !this.stacked){
+      const cx = innerWidth / 2;
+      (this.cards || []).forEach(el => {
+        const r = el.getBoundingClientRect();
+        const c = Math.min(1, Math.max(-1, ((r.left + r.width / 2) - cx) / (innerWidth * 0.7)));
+        el.style.setProperty('--c', c.toFixed(3));
+      });
+    } else {
+      (this.cards || []).forEach(el => el.style.setProperty('--c', 0));
+    }
+  }
+
+  motion(){ return this.reduced || (this.props.motion || 'Full') === 'Off'; }
+
+  renderVals(){ return {}; }
+}
+</script>
+</body>
+</html>
